@@ -1,4 +1,5 @@
-﻿//#define USE_CONEMU
+﻿#define USE_CONEMU
+using _05_DynamicObjects.Exercises;
 using _05_DynamicObjects.Samples;
 using System;
 using System.Diagnostics;
@@ -26,6 +27,12 @@ namespace _05_DynamicObjects
             #endregion
 
             //Start code below
+
+            DynamicMath dynamicMath = new DynamicMath();
+            Debug.WriteLine((string)dynamicMath.Sum(10, 5).ToString());
+            Debug.WriteLine((string)dynamicMath.Multi(10, 2.5).ToString());
+            Debug.WriteLine((string)dynamicMath.Sum("10", 2.5).ToString());
+
 
             Console.ReadKey();
 

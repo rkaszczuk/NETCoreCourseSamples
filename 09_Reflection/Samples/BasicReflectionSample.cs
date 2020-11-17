@@ -3,18 +3,37 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Linq;
+using _09_Reflection.Exercises;
 
 namespace _09_Reflection.Samples
 {
+    [AttributeUsage(AttributeTargets.Property)]
+    public class DefaultValueAttribute : Attribute
+    {
+        public object DefaultValue { get; set; }
+        public DefaultValueAttribute(object defaultValue)
+        {
+            DefaultValue = defaultValue;
+        }
+    }
+
+    public class NoPrintAttribute : Attribute
+    {
+    }
+
     public class Address
     {
         public string Street { get; set; }
         public string City { get; set; }
     }
+
     public class User
     {
+        [MaxStringLength(5)]
         public string Name { get; set; }
+        [DefaultValue(18)]
         public int Age { get; set; }
+        [NoPrintAttribute]
         public Address Address { get; set; } = new Address();
         public string GetFullAddress(string postCode = "00-000")
         {
@@ -53,6 +72,7 @@ namespace _09_Reflection.Samples
                     }
                 }
             }
+
             PrintProperties(typeof(User));
 
             //Spróbujmy pobrać wartości

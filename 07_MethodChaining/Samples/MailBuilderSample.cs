@@ -65,7 +65,7 @@ namespace _07_MethodChaining.Samples
         }
         public MailBuilderSample SetIsHtml(bool isHtml = true)
         {
-            this.IsHtml = IsHtml;
+            this.IsHtml = isHtml;
             return this;
         }
         private bool CheckMailAddress(string mailAddress)

@@ -10,13 +10,14 @@ namespace _09_Reflection.Samples
     {
         public static void ReflectionEmitDynamicMethodSampleTest()
         {
-            //Wyszukanie metody Console.WriteLine
+            //Wyszukanie metody Console.WriteLine(string)
             var writeLineMethod = typeof(Console).GetMethod("WriteLine", types: new Type[] { typeof(string) });
 
             //Wyszukanie metody String.Concat(string, string)
             var concatMethod = typeof(String).GetMethod("Concat", types: new Type[] { typeof(string), typeof(string) });
 
             //Tworzę dynamiczną metodę o nazwie WriteHello, zwracającą void i przyjmujacą 1 parametr typu string
+            //void WriteHello(string ...)
             DynamicMethod writeHello = new DynamicMethod("WriteHello", typeof(void), new Type[] { typeof(string) });
 
             //Pobieram generator kodu IL

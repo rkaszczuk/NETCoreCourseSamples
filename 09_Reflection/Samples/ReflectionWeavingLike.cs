@@ -16,6 +16,14 @@ namespace _09_Reflection.Samples
             var writeLineMethod = typeof(Console).GetMethod("WriteLine", new Type[] { typeof(string) });
 
             //Tworzymy metodę dynamiczną przyjmującą Func<T> i zwracającą T
+            //T RunWithMessureTime(Func<T> func)
+            //
+            //var sw = System.Diagnostics.Stopwatch().StartNew()
+            //var result = func()
+            //Console.Writeline(ElapsedMilliseconds)
+            //return T
+
+
             DynamicMethod runWithMessureTime = new DynamicMethod("RunWithMessureTime", typeof(T), new Type[] { typeof(Func<T>) });
             
             //Pobieram generator kodu IL
