@@ -15,9 +15,26 @@ namespace _04_AnonymousFunctions.Exercises
     //W momencie wykonania akcji Notify z przekazanym tematem powinno nastąpić wyszukanie wszystkich powiązanych z tym tematem subskrypcji oraz ich uruchomienie
     public class Publisher
     {
+        private Dictionary<string, List<Action<string>>> topicsWithSubscriptions = new Dictionary<string, List<Action<string>>>();
+
+        public void Subscribe(string topic, Action<string> action)
+        {
+            if (!topicsWithSubscriptions.ContainsKey(topic))
+            {
+                topicsWithSubscriptions.Add(topic, new List<Action<string>>());
+            }
+            topicsWithSubscriptions[topic].Add(action);
+        }
         public void Notify(string topicName)
         {
-            throw new NotImplementedException();
+            if (topicsWithSubscriptions.ContainsKey(topicName))
+            {
+                var subscribers = topicsWithSubscriptions[topicName];
+                foreach(var sub in subscribers)
+                {
+                    sub(topicName);
+                }
+            }
         }
     }
 

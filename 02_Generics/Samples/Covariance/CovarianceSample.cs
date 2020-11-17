@@ -5,6 +5,12 @@ using System.Text;
 
 namespace _02_Generics.Samples.Covariance
 {
+    //Base, Child
+    //Invariant - Base /-> Child, Child /-> base
+    //Covariance - Base /-> Child, Child -> Base
+    //Contrvariance Base -> Child, Child /-> Base
+
+
     public class CovarianceSample
     {
         //Kowariancja zmiennych
@@ -29,6 +35,8 @@ namespace _02_Generics.Samples.Covariance
             List<ParentClass> parentList;
             //ERROR
             //parentList = new List<ChildClass>();
+
+
 
             List<ChildClass> childList;
             //ERROR
